@@ -13,37 +13,37 @@ const serviceInfo = {
   washing: {
     title: "Washing",
     description: "Professional washing service with premium detergents",
-    price: "$10/kg",
+    price: "Ksh. 1,000/kg",
     Icon: Shirt,
   },
   ironing: {
     title: "Ironing",
     description: "Expert ironing service for wrinkle-free clothes",
-    price: "$5/item",
+    price: "Ksh. 500/item",
     Icon: Scissors,
   },
   "dry-cleaning": {
     title: "Dry Cleaning",
     description: "Specialized dry cleaning for delicate fabrics",
-    price: "$15/item",
+    price: "Ksh. 1,500/item",
     Icon: Wind,
   },
   "stain-removal": {
     title: "Stain Removal",
     description: "Professional stain removal for tough spots",
-    price: "$12/item",
+    price: "Ksh. 1,200/item",
     Icon: Sparkles,
   },
   "express": {
     title: "Express Service",
     description: "Same-day service for urgent needs",
-    price: "+$8 surcharge",
+    price: "+Ksh. 800 surcharge",
     Icon: Clock,
   },
   "folding": {
     title: "Folding & Packaging",
     description: "Professional folding and packaging service",
-    price: "$3/kg",
+    price: "Ksh. 300/kg",
     Icon: Package,
   }
 };
