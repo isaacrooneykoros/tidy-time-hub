@@ -1,10 +1,10 @@
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
-import { Shirt, Scissors, Wind } from "lucide-react";
+import { Shirt, Scissors, Wind, Sparkles, Clock, Package } from "lucide-react";
 import { cn } from "@/lib/utils";
 
 interface ServiceCardProps {
-  type: "washing" | "ironing" | "dry-cleaning";
+  type: "washing" | "ironing" | "dry-cleaning" | "stain-removal" | "express" | "folding";
   selected?: boolean;
   onSelect: () => void;
 }
@@ -28,10 +28,33 @@ const serviceInfo = {
     price: "$15/item",
     Icon: Wind,
   },
+  "stain-removal": {
+    title: "Stain Removal",
+    description: "Professional stain removal for tough spots",
+    price: "$12/item",
+    Icon: Sparkles,
+  },
+  "express": {
+    title: "Express Service",
+    description: "Same-day service for urgent needs",
+    price: "+$8 surcharge",
+    Icon: Clock,
+  },
+  "folding": {
+    title: "Folding & Packaging",
+    description: "Professional folding and packaging service",
+    price: "$3/kg",
+    Icon: Package,
+  }
 };
 
 export function ServiceCard({ type, selected = false, onSelect }: ServiceCardProps) {
   const { title, description, price, Icon } = serviceInfo[type];
+
+  const handleClick = (e: React.MouseEvent) => {
+    e.preventDefault();
+    onSelect();
+  };
 
   return (
     <Card 
@@ -39,7 +62,7 @@ export function ServiceCard({ type, selected = false, onSelect }: ServiceCardPro
         "transition-all duration-300 hover:shadow-lg cursor-pointer animate-fadeIn",
         selected && "ring-2 ring-primary"
       )}
-      onClick={onSelect}
+      onClick={handleClick}
     >
       <CardHeader>
         <div className="flex items-center justify-between">
@@ -53,9 +76,9 @@ export function ServiceCard({ type, selected = false, onSelect }: ServiceCardPro
           <span className="text-lg font-bold text-primary">{price}</span>
           <Button 
             variant={selected ? "default" : "outline"}
-            onClick={onSelect}
+            onClick={handleClick}
           >
-            {selected ? "Selected" : "Select"}
+            {selected ? "Deselect" : "Select"}
           </Button>
         </div>
       </CardContent>

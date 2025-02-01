@@ -4,7 +4,15 @@ import { BookingForm } from "@/components/BookingForm";
 import { Separator } from "@/components/ui/separator";
 
 const Index = () => {
-  const [selectedService, setSelectedService] = useState<string | null>(null);
+  const [selectedServices, setSelectedServices] = useState<string[]>([]);
+
+  const toggleService = (service: string) => {
+    setSelectedServices(prev => 
+      prev.includes(service)
+        ? prev.filter(s => s !== service)
+        : [...prev, service]
+    );
+  };
 
   return (
     <div className="min-h-screen bg-gray-50">
@@ -22,26 +30,41 @@ const Index = () => {
             <p className="text-gray-600 mt-2">Choose from our professional laundry services</p>
           </div>
 
-          <div className="grid gap-6 md:grid-cols-3">
+          <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
             <ServiceCard
               type="washing"
-              selected={selectedService === "washing"}
-              onSelect={() => setSelectedService("washing")}
+              selected={selectedServices.includes("washing")}
+              onSelect={() => toggleService("washing")}
             />
             <ServiceCard
               type="ironing"
-              selected={selectedService === "ironing"}
-              onSelect={() => setSelectedService("ironing")}
+              selected={selectedServices.includes("ironing")}
+              onSelect={() => toggleService("ironing")}
             />
             <ServiceCard
               type="dry-cleaning"
-              selected={selectedService === "dry-cleaning"}
-              onSelect={() => setSelectedService("dry-cleaning")}
+              selected={selectedServices.includes("dry-cleaning")}
+              onSelect={() => toggleService("dry-cleaning")}
+            />
+            <ServiceCard
+              type="stain-removal"
+              selected={selectedServices.includes("stain-removal")}
+              onSelect={() => toggleService("stain-removal")}
+            />
+            <ServiceCard
+              type="express"
+              selected={selectedServices.includes("express")}
+              onSelect={() => toggleService("express")}
+            />
+            <ServiceCard
+              type="folding"
+              selected={selectedServices.includes("folding")}
+              onSelect={() => toggleService("folding")}
             />
           </div>
         </section>
 
-        {selectedService && (
+        {selectedServices.length > 0 && (
           <>
             <Separator className="my-12" />
             <section className="max-w-md mx-auto space-y-6">
