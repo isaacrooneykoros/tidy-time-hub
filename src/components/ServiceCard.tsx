@@ -1,6 +1,6 @@
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
-import { Washing, Iron, Wind } from "lucide-react";
+import { Shirt, Scissors, Wind } from "lucide-react";
 import { cn } from "@/lib/utils";
 
 interface ServiceCardProps {
@@ -14,13 +14,13 @@ const serviceInfo = {
     title: "Washing",
     description: "Professional washing service with premium detergents",
     price: "$10/kg",
-    Icon: Washing,
+    Icon: Shirt,
   },
   ironing: {
     title: "Ironing",
     description: "Expert ironing service for wrinkle-free clothes",
     price: "$5/item",
-    Icon: Iron,
+    Icon: Scissors,
   },
   "dry-cleaning": {
     title: "Dry Cleaning",
