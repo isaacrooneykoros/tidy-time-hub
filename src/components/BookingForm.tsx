@@ -25,47 +25,67 @@ export function BookingForm() {
   return (
     <form onSubmit={handleSubmit} className="space-y-6 animate-fadeIn">
       <div className="space-y-2">
-        <Label htmlFor="name">Full Name</Label>
-        <Input id="name" placeholder="John Doe" required />
+        <Label htmlFor="name" className="text-white">Full Name</Label>
+        <Input 
+          id="name" 
+          placeholder="John Doe" 
+          required 
+          className="bg-[#1a1a1a] border-gray-800 text-white placeholder:text-gray-500"
+        />
       </div>
 
       <div className="space-y-2">
-        <Label htmlFor="phone">Phone Number</Label>
-        <Input id="phone" type="tel" placeholder="+1 234 567 8900" required />
+        <Label htmlFor="phone" className="text-white">Phone Number</Label>
+        <Input 
+          id="phone" 
+          type="tel" 
+          placeholder="+254 700 000 000" 
+          required 
+          className="bg-[#1a1a1a] border-gray-800 text-white placeholder:text-gray-500"
+        />
       </div>
 
       <div className="space-y-2">
-        <Label htmlFor="address">Pickup Address</Label>
-        <Textarea id="address" placeholder="Enter your full address" required />
+        <Label htmlFor="address" className="text-white">Pickup Address</Label>
+        <Textarea 
+          id="address" 
+          placeholder="Enter your full address" 
+          required 
+          className="bg-[#1a1a1a] border-gray-800 text-white placeholder:text-gray-500"
+        />
       </div>
 
       <div className="space-y-2">
-        <Label>Pickup Date</Label>
+        <Label className="text-white">Pickup Date</Label>
         <Popover>
           <PopoverTrigger asChild>
             <Button
               variant="outline"
               className={cn(
-                "w-full justify-start text-left font-normal",
-                !date && "text-muted-foreground"
+                "w-full justify-start text-left font-normal bg-[#1a1a1a] border-gray-800",
+                !date && "text-gray-500"
               )}
             >
               <CalendarIcon className="mr-2 h-4 w-4" />
               {date ? format(date, "PPP") : "Pick a date"}
             </Button>
           </PopoverTrigger>
-          <PopoverContent className="w-auto p-0">
+          <PopoverContent className="w-auto p-0 bg-[#1a1a1a] border-gray-800">
             <Calendar
               mode="single"
               selected={date}
               onSelect={setDate}
               initialFocus
+              className="bg-[#1a1a1a]"
             />
           </PopoverContent>
         </Popover>
       </div>
 
-      <Button type="submit" className="w-full">
+      <Button 
+        type="submit" 
+        className="w-full bg-yellow-400 text-black hover:bg-yellow-500"
+      >
         Book Now
       </Button>
     </form>

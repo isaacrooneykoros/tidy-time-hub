@@ -34,13 +34,13 @@ const serviceInfo = {
     price: "Ksh. 1,200/item",
     Icon: Sparkles,
   },
-  "express": {
+  express: {
     title: "Express Service",
     description: "Same-day service for urgent needs",
     price: "+Ksh. 800 surcharge",
     Icon: Clock,
   },
-  "folding": {
+  folding: {
     title: "Folding & Packaging",
     description: "Professional folding and packaging service",
     price: "Ksh. 300/kg",
@@ -51,34 +51,36 @@ const serviceInfo = {
 export function ServiceCard({ type, selected = false, onSelect }: ServiceCardProps) {
   const { title, description, price, Icon } = serviceInfo[type];
 
-  const handleClick = (e: React.MouseEvent) => {
-    e.preventDefault();
-    onSelect();
-  };
-
   return (
     <Card 
       className={cn(
-        "transition-all duration-300 hover:shadow-lg cursor-pointer animate-fadeIn",
-        selected && "ring-2 ring-primary"
+        "transition-all duration-300 hover:scale-105 cursor-pointer animate-fadeIn bg-[#1a1a1a] border-gray-800",
+        selected && "ring-2 ring-yellow-400"
       )}
-      onClick={handleClick}
+      onClick={onSelect}
     >
       <CardHeader>
         <div className="flex items-center justify-between">
-          <CardTitle className="text-xl font-semibold">{title}</CardTitle>
-          <Icon className="w-6 h-6 text-primary" />
+          <CardTitle className="text-xl font-semibold text-white">{title}</CardTitle>
+          <div className="w-10 h-10 bg-yellow-400 rounded-full flex items-center justify-center">
+            <Icon className="w-5 h-5 text-black" />
+          </div>
         </div>
-        <CardDescription>{description}</CardDescription>
+        <CardDescription className="text-gray-400">{description}</CardDescription>
       </CardHeader>
       <CardContent>
         <div className="flex justify-between items-center">
-          <span className="text-lg font-bold text-primary">{price}</span>
+          <span className="text-lg font-bold text-yellow-400">{price}</span>
           <Button 
             variant={selected ? "default" : "outline"}
-            onClick={handleClick}
+            className={cn(
+              selected 
+                ? "bg-yellow-400 text-black hover:bg-yellow-500" 
+                : "border-yellow-400 text-yellow-400 hover:bg-yellow-400 hover:text-black"
+            )}
+            onClick={onSelect}
           >
-            {selected ? "Deselect" : "Select"}
+            {selected ? "Selected" : "Select"}
           </Button>
         </div>
       </CardContent>
